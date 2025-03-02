@@ -8,3 +8,5 @@ export const store = configureStore({
         patients: patientsReducer,
     }
 })
+
+export type RootState = ReturnType<typeof store.getState>

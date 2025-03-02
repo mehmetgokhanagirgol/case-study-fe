@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Hospital, HospitalsState } from "./hospitalTypes";
+import { RootState } from "../../app/store";
 
 const initialState: HospitalsState = {
     hospitalList: []
@@ -29,4 +30,5 @@ export const hospitalsSlice = createSlice({
 })
 
 export const {addHospital, removeHospital, updateHospital} = hospitalsSlice.actions
+export const selectHospitalList = (state: RootState) => state.hospitals.hospitalList
 export default hospitalsSlice.reducer

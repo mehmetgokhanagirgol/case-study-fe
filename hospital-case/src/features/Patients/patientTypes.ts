@@ -4,7 +4,7 @@ export interface Patient {
     patientId: string,
     name: string,
     surname: string,
-    sex: string,
+    gender: string,
     age: number,
     turkishCitizenshipId: number,
     address: string,
@@ -13,5 +13,5 @@ export interface Patient {
 }
 
 export interface PatientsState {
-    patients: Patient[]
+    patientList: Patient[]
 }

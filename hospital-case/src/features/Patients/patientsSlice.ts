@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Patient, PatientsState } from "./patientTypes";
+import { RootState } from "../../app/store";
 
 const initialState: PatientsState = {
-    patients: []
+    patientList: []
 }
 
 export const patientsSlice = createSlice({
@@ -10,13 +11,13 @@ export const patientsSlice = createSlice({
     initialState,
     reducers: {
         addPatient: (state, action: PayloadAction<Patient>) => {
-            state.patients = [...state.patients, action.payload]
+            state.patientList = [...state.patientList, action.payload]
         },
         removePatient: (state, action: PayloadAction<Patient>) => {
-            state.patients = state.patients.filter(patient => patient.patientId !== action.payload.patientId)
+            state.patientList = state.patientList.filter(patient => patient.patientId !== action.payload.patientId)
         },
         updatePatient: (state, action: PayloadAction<Patient>) => {
-            state.patients = state.patients.map((patient) => {
+            state.patientList = state.patientList.map((patient) => {
                 if(patient.patientId === action.payload.patientId){
                     return {
                         ...patient,
@@ -32,4 +33,5 @@ export const patientsSlice = createSlice({
 })
 
 export const {addPatient, removePatient, updatePatient} = patientsSlice.actions
+export const selectPatients = (state: RootState) => state.patients.patientList
 export default patientsSlice.reducer
