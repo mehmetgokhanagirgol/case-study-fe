@@ -13,11 +13,7 @@ const PatientGrid = () => {
         { field: 'address', headerName: 'Address', width: 150 },
         { field: 'complaint', headerName: 'Complaint', width: 150 },
     ]
-    return (
-        <div style={{ height: 300, width: '100%' }}>
-            <DataGrid rows={patientList} columns={columns} />
-        </div>
-    )
+    return <DataGrid rows={patientList} columns={columns} />
 }
 
 export default PatientGrid

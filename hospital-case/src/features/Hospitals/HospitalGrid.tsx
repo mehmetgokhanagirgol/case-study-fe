@@ -9,11 +9,7 @@ const HospitalGrid = () => {
         { field: 'address', headerName: 'Address', width: 150 },
         { field: 'category', headerName: 'Category', width: 150 },
     ]
-    return (
-        <div style={{ height: 300, width: '100%' }}>
-            <DataGrid rows={hospitalList} columns={columns} />
-        </div>
-    )
+    return <DataGrid rows={hospitalList} columns={columns} />
 }
 
 export default HospitalGrid
