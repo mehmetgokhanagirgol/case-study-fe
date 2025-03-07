@@ -7,6 +7,7 @@ import App from './App.tsx'
 import './index.css'
 import PatientGrid from './features/Patients/PatientGrid.tsx'
 import HospitalGrid from './features/Hospitals/HospitalGrid.tsx'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
