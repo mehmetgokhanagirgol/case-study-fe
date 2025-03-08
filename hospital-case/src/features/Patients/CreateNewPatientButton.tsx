@@ -6,7 +6,7 @@ interface CreateNewPatientButtonProps {
 
 const CreateNewPatientButton = ({ onClick }: CreateNewPatientButtonProps) => {
     return (
-        <Button variant="contained" onClick={onClick}>
+        <Button variant="contained" className="m-3" onClick={onClick}>
             Create New Patient
         </Button>
     )

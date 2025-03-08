@@ -1,8 +1,11 @@
+import { Patient } from "../Patients/patientTypes";
+
 export interface Hospital {
-    hospitalId: string,
+    id: string,
     name: string,
     address: string,
-    category: string
+    category: string,
+    patientList?: Patient[]
 }
 
 export interface HospitalsState {

@@ -13,12 +13,12 @@ export const hospitalsSlice = createSlice({
         addHospital: (state, action: PayloadAction<Hospital>) => {
             state.hospitalList = [...state.hospitalList, action.payload]
         },
-        removeHospital: (state, action: PayloadAction<Hospital>) => {
-            state.hospitalList = state.hospitalList.filter(hospital => hospital.hospitalId !== action.payload.hospitalId)
+        removeHospital: (state, action: PayloadAction<string>) => {
+            state.hospitalList = state.hospitalList.filter(hospital => hospital.id !== action.payload)
         },
         updateHospital: (state, action: PayloadAction<Hospital>) => {
             state.hospitalList = state.hospitalList.map((hospital) => {
-                if(hospital.hospitalId === action.payload.hospitalId){
+                if(hospital.id === action.payload.id){
                     return {...hospital, ...action.payload}
                 }
                 else{
@@ -31,4 +31,5 @@ export const hospitalsSlice = createSlice({
 
 export const {addHospital, removeHospital, updateHospital} = hospitalsSlice.actions
 export const selectHospitalList = (state: RootState) => state.hospitals.hospitalList
+export const selectHospitalById = (state: RootState, id?: string) => state.hospitals.hospitalList.find((hospital) => hospital.id === id)
 export default hospitalsSlice.reducer

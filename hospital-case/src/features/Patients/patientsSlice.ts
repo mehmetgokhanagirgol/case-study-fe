@@ -13,12 +13,12 @@ export const patientsSlice = createSlice({
         addPatient: (state, action: PayloadAction<Patient>) => {
             state.patientList = [...state.patientList, action.payload]
         },
-        removePatient: (state, action: PayloadAction<Patient>) => {
-            state.patientList = state.patientList.filter(patient => patient.patientId !== action.payload.patientId)
+        removePatient: (state, action: PayloadAction<string>) => {
+            state.patientList = state.patientList.filter(patient => patient.id !== action.payload)
         },
         updatePatient: (state, action: PayloadAction<Patient>) => {
             state.patientList = state.patientList.map((patient) => {
-                if(patient.patientId === action.payload.patientId){
+                if(patient.id === action.payload.id){
                     return {
                         ...patient,
                         ...action.payload
@@ -34,4 +34,5 @@ export const patientsSlice = createSlice({
 
 export const {addPatient, removePatient, updatePatient} = patientsSlice.actions
 export const selectPatients = (state: RootState) => state.patients.patientList
+export const selectPatientById = (state: RootState, id?: string) => state.patients.patientList.find((patient) => patient.id === id)
 export default patientsSlice.reducer

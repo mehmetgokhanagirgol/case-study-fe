@@ -1,7 +1,5 @@
-import { Hospital } from "../Hospitals/hospitalTypes";
-
 export interface Patient {
-    patientId: string,
+    id: string,
     name: string,
     surname: string,
     gender: string,
@@ -9,7 +7,7 @@ export interface Patient {
     turkishCitizenshipId: number,
     address: string,
     complaint: string,
-    hospital: Hospital
+    hospitalId: string
 }
 
 export interface PatientsState {

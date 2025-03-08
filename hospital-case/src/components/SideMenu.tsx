@@ -1,29 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CreateNewHospitalButton from '../features/Hospitals/CreateNewHospitalButton'
 import CreateNewPatientButton from '../features/Patients/CreateNewPatientButton'
 import NavList from './NavList'
-import HospitalFormModal from '../features/Hospitals/HospitalFormModal'
-import PatientFormModal from '../features/Patients/PatientFormModal'
+import { useNavigate } from 'react-router'
 
 const SideMenu = () => {
-    const [isHospitalFormModalOpen, setIsHospitalFormModalOpen] =
-        useState(false)
-    const [isPatientFormModalOpen, setIsPatientFormModalOpen] = useState(false)
+    const navigate = useNavigate()
+    const createNewHospitalHandler = () => {
+        navigate('/hospital/form/new')
+    }
+    const createNewPatientHandler = () => {
+        navigate('patient/form/new')
+    }
     return (
         <React.Fragment>
-            <div className="d-flex flex-column justify-content-between">
+            <div
+                className="d-flex flex-column justify-content-between"
+                style={{ border: '1px solid lightgrey' }}
+            >
                 <NavList />
-                <div className="d-flex flex-column gap-3 mb-5">
+                <div className="d-flex flex-column">
                     <CreateNewHospitalButton
-                        onClick={() => setIsHospitalFormModalOpen(true)}
+                        onClick={createNewHospitalHandler}
                     />
-                    <CreateNewPatientButton
-                        onClick={() => setIsPatientFormModalOpen(true)}
-                    />
+                    <CreateNewPatientButton onClick={createNewPatientHandler} />
                 </div>
             </div>
-            <HospitalFormModal isOpen={isHospitalFormModalOpen} />
-            <PatientFormModal isOpen={isPatientFormModalOpen} />
         </React.Fragment>
     )
 }
